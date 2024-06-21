@@ -1,4 +1,4 @@
-# which files and folders should be ignored by github, doesnt make sense to push. For instance .venv to github, takes too much space
+
 
 # Created by https://www.toptal.com/developers/gitignore/api/python,linux,visualstudiocode,venv
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,linux,visualstudiocode,venv
