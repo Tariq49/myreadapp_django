@@ -15,8 +15,22 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include 
+from django.contrib.auth import views as auth_views
+
+
+# from apps.myread.views import home_page, HomePage
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    
+    # include all urls from myread
+    path("", include('apps.myread.urls', namespace='myread-urls')),
+    path("", include("apps.book.urls", namespace='book-urls')),
+    path("", include('apps.reader.urls', namespace='reader-urls')),
+    path("logout/", auth_views.LogoutView.as_view(), name='logout')
+    # path(url, view, name)
+    # name = unique identifier for the path
+    #path('', home_page, name='home-page'),
+    #path('home/', HomePage.as_view(), name='home-page-two')
 ]

@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.postgres.fields import ArrayField # postgreSQL specific
 from apps.core.models import CreatedModifiedAbstract
+
+from apps.core.constants import BOOK_CATEGORY, BOOK_FORMAT
 # Create your models here.
 
 class BookManager(models.Manager):
@@ -41,18 +43,8 @@ class Tag(models.Model):
     
 
 class Book(CreatedModifiedAbstract):
-    BOOK_CATEGORY = {
-        "pr": "programming",
-        "ar": "art",
-        "hi": "history",
-        "po" : "politics",
-        "ot" : "others"
-
-    }
-    BOOK_FORMAT = {
-        "eb": "ebook",
-        "hc": "hardcover"
-    }
+   
+   
     isbn = models.CharField(max_length=13, primary_key=True)
     title = models.CharField(max_length=50)
     description = models.TextField(null=True, blank=True)

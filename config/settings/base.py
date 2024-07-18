@@ -42,7 +42,11 @@ ROOT_URLCONF = "config.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
+        # You want to be explicit on the location of your templates
         "DIRS": [],
+        # Django will search for templates in each app that is
+        # registered in the INSTALLED_APPS
+        # It will look for a specific folder called 'templates'
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -91,7 +95,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
+STATICFILES_DIRS = [BASE_DIR / 'static']
+LOGOUT_REDIRECT_URL = '/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -100,3 +106,4 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Inform django about the new user model, AUTH_USER_MODEL = <app-name>.<model_class>
 AUTH_USER_MODEL = 'reader.Reader'
+
